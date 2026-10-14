@@ -1,0 +1,4 @@
+# Only needed to rerun the supplied preprocessing script on raw Olist files.
+numpy==2.2.6
+pandas==2.2.3
+

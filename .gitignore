@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.venv/
+.local/
+__pycache__/
+*.pyc
+.DS_Store
+reports/
+*.log
+*.zip
+analysis/fact_orders_wide.csv
+data/clean/*.csv

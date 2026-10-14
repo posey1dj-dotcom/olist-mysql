@@ -1,0 +1,32 @@
+name: MySQL reproducibility
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mysql:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Build and load a fresh MySQL database
+        run: python scripts/bootstrap.py --mode docker
+      - name: Verify idempotent setup
+        run: docker compose run --rm setup
+      - name: Verify all values and read-only access
+        run: docker compose run --rm setup python scripts/manage.py verify
+      - name: Verify enforced constraints
+        run: |
+          python -m pip install -r requirements.txt
+          OLIST_RUN_DB_TESTS=1 python -m unittest discover -s tests -v
+      - name: Shut down disposable CI services
+        if: always()
+        run: docker compose down

@@ -1,0 +1,48 @@
+﻿table,step,affected_rows,note
+geolocation,raw rows,1000163,
+geolocation,drop exact duplicate rows,261831,
+geolocation,drop coords outside Brazil,27,
+geolocation,aggregated to 1 row / zip prefix,19011,PK = zip_code_prefix
+customers,raw rows,99441,
+customers,city filled from geolocation,0,
+customers,zip prefix not in geolocation (kept),279,坐标留空
+customers,distinct customer_unique_id,96096,复购分析须用 unique_id
+sellers,raw rows,3095,
+sellers,city text normalized (changed),27,去重音/去'/sp'后缀等
+sellers,invalid city -> filled from geolocation,2,如 '04482255'
+category,fix english typos,4,
+category,add missing categories,3,
+products,raw rows,32951,
+products,missing category -> 'unknown',610,
+products,weight == 0 -> NaN,4,
+products,impute dims by category median,6,
+orders,raw rows,99441,
+orders,flag: carrier date < purchase,166,
+orders,flag: delivered < carrier date,23,
+orders,flag: status=delivered but no date,8,
+orders,flag: not delivered but has date,6,
+orders,flag: approved > 7 days after purchase,81,
+orders,flag: outside 2017-01~2018-08,349,首尾月份数据不完整
+order_items,raw rows,112650,
+order_items,"drop duplicated PK (order_id,item_id)",0,
+order_items,drop price<=0 or freight<0,0,
+order_items,"freight == 0 (kept, free shipping)",383,
+order_items,flag: price outlier (>Q3+3IQR),4074,
+payments,raw rows,103886,
+payments,installments 0 -> 1,2,
+payments,payment_type = not_defined (kept),3,
+payments,"payment_value == 0 (kept, voucher)",9,
+reviews,raw rows,99224,
+reviews,review_id duplicated (1 review->n orders),814,
+reviews,"drop duplicated PK (review_id,order_id)",0,
+reviews,has text comment,40950,
+FK,orders.customer_id -> customers,0,OK
+FK,order_items.order_id -> orders,0,OK
+FK,order_items.product_id -> products,0,OK
+FK,order_items.seller_id -> sellers,0,OK
+FK,payments.order_id -> orders,0,OK
+FK,reviews.order_id -> orders,0,OK
+FK,products.category -> category,0,OK
+wide,flag: |payment - items| > 1 BRL,249,"多为利息/优惠券, 保留"
+wide,orders without items,775,多为 unavailable/canceled
+wide,final rows,99441,

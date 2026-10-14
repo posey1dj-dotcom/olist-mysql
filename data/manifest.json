@@ -1,0 +1,198 @@
+{
+  "snapshot_date": "2026-10-14",
+  "tables": {
+    "geolocation": {
+      "file": "data/clean/geolocation.csv.gz",
+      "sha256": "ea9aec72dadaa8174179e225fa98a5ac5cf7556bd1132dfe24580713d6f42e53",
+      "bytes": 777995,
+      "rows": 19011,
+      "columns": [
+        "zip_code_prefix",
+        "lat",
+        "lng",
+        "city",
+        "state",
+        "n_points"
+      ],
+      "source_file": "data/clean/geolocation.csv",
+      "archive_sha256": "a85b584b731f702a9ed1ef489a3072afc1397bb06a43ef77b78ee017f70afabb",
+      "archive_bytes": 239839
+    },
+    "customers": {
+      "file": "data/clean/customers.csv.gz",
+      "sha256": "f0fb6a6d524737d77ff82714783619dbf5b3bd6ce33f5e9062d1063e6643aafa",
+      "bytes": 8785186,
+      "rows": 99441,
+      "columns": [
+        "customer_id",
+        "customer_unique_id",
+        "customer_zip_code_prefix",
+        "customer_city",
+        "customer_state",
+        "customer_total_orders"
+      ],
+      "source_file": "data/clean/customers.csv",
+      "archive_sha256": "b77d53dc0b391ebaec63cb3aad4e95942b9c226ef62b13a936407ad32698a72e",
+      "archive_bytes": 4687055
+    },
+    "sellers": {
+      "file": "data/clean/sellers.csv.gz",
+      "sha256": "b9953b35012a39a77c505a1d7d6f4dead5b5adbd43e51ead2a792cc4b72ad6fc",
+      "bytes": 164386,
+      "rows": 3095,
+      "columns": [
+        "seller_id",
+        "seller_zip_code_prefix",
+        "seller_city",
+        "seller_state"
+      ],
+      "source_file": "data/clean/sellers.csv",
+      "archive_sha256": "11531ac2074b0fe9f5b37b038334faee53c4837a87ed54a65100b4001225f5db",
+      "archive_bytes": 81084
+    },
+    "product_category": {
+      "file": "data/clean/product_category.csv.gz",
+      "sha256": "4f3bbe4f4da3f83ec264e22a13875adffde96cffd3119588cb1341e0d84aefd4",
+      "bytes": 2655,
+      "rows": 74,
+      "columns": [
+        "product_category_name",
+        "product_category_name_english"
+      ],
+      "source_file": "data/clean/product_category.csv",
+      "archive_sha256": "0ef7fd46c1c1e8dbb0f0601ce6cadc85de7cf9d4699c2539d3988e0609f5b069",
+      "archive_bytes": 1120
+    },
+    "products": {
+      "file": "data/clean/products.csv.gz",
+      "sha256": "c9f87be64e454b7058b2ffbd5e0223d22d3975d17ce7adbd280275938696690e",
+      "bytes": 2916007,
+      "rows": 32951,
+      "columns": [
+        "product_id",
+        "product_category_name",
+        "product_name_length",
+        "product_description_length",
+        "product_photos_qty",
+        "product_weight_g",
+        "product_length_cm",
+        "product_height_cm",
+        "product_width_cm",
+        "is_listing_info_missing",
+        "product_volume_cm3"
+      ],
+      "source_file": "data/clean/products.csv",
+      "archive_sha256": "8c51334970ff630f747e5a6881ec1b9ec3fdfdaaa43910923498488780dffefd",
+      "archive_bytes": 1154863
+    },
+    "orders": {
+      "file": "data/clean/orders.csv.gz",
+      "sha256": "5eb029f962a16a0cb1dbb76a3e83c29821ad9763a454aab8c270c1abfc1788e4",
+      "bytes": 23395539,
+      "rows": 99441,
+      "columns": [
+        "order_id",
+        "customer_id",
+        "order_status",
+        "order_purchase_timestamp",
+        "order_approved_at",
+        "order_delivered_carrier_date",
+        "order_delivered_customer_date",
+        "order_estimated_delivery_date",
+        "is_time_anomaly",
+        "is_status_anomaly",
+        "purchase_date",
+        "purchase_year",
+        "purchase_month",
+        "purchase_dow",
+        "purchase_hour",
+        "approve_hours",
+        "delivery_days",
+        "estimated_days",
+        "delay_days",
+        "is_late",
+        "is_slow_approval",
+        "is_full_period"
+      ],
+      "source_file": "data/clean/orders.csv",
+      "archive_sha256": "69e0ce21f873efbf6bce653fd1aa35cacb41ed476003da098a223b54aec5053e",
+      "archive_bytes": 9261687
+    },
+    "order_items": {
+      "file": "data/clean/order_items.csv.gz",
+      "sha256": "e6c67da58523119cd850cdd7487324e5ffb2edceaaa42645feaf0765b01d6992",
+      "bytes": 16625732,
+      "rows": 112650,
+      "columns": [
+        "order_id",
+        "order_item_id",
+        "product_id",
+        "seller_id",
+        "shipping_limit_date",
+        "price",
+        "freight_value",
+        "item_total",
+        "freight_ratio",
+        "is_price_outlier"
+      ],
+      "source_file": "data/clean/order_items.csv",
+      "archive_sha256": "a7e99579761652d582e39e8aeb80ba9f2a71433c4c7e4420993ac82e02f1ddd7",
+      "archive_bytes": 7265925
+    },
+    "order_payments": {
+      "file": "data/clean/order_payments.csv.gz",
+      "sha256": "04a688829df9f02884d4fa8c52fb00906d0ae10d996a3d761cf6b0e3d67ea587",
+      "bytes": 5633362,
+      "rows": 103886,
+      "columns": [
+        "order_id",
+        "payment_sequential",
+        "payment_type",
+        "payment_installments",
+        "payment_value"
+      ],
+      "source_file": "data/clean/order_payments.csv",
+      "archive_sha256": "929ddae79332c4eb6d46575fd33296ff8facc95423e37cbd594d8def00032e24",
+      "archive_bytes": 2526148
+    },
+    "order_reviews": {
+      "file": "data/clean/order_reviews.csv.gz",
+      "sha256": "1ce35f98e778f9a3d95e8839caf0c9be141c5442cdd28cbc91933f089d61175e",
+      "bytes": 16058961,
+      "rows": 99224,
+      "columns": [
+        "review_id",
+        "order_id",
+        "review_score",
+        "review_comment_title",
+        "review_comment_message",
+        "review_creation_date",
+        "review_answer_timestamp",
+        "has_comment",
+        "comment_length",
+        "answer_hours",
+        "sentiment_label"
+      ],
+      "source_file": "data/clean/order_reviews.csv",
+      "archive_sha256": "ef4c59039861f67e3ef20cb6147d96378642d0384f4e2cf9bc8c8abbcfcf419f",
+      "archive_bytes": 7286307
+    }
+  },
+  "not_imported": {
+    "fact_orders_wide": {
+      "file": "analysis/fact_orders_wide.csv",
+      "sha256": "abcb9177628526cfb8f19beffe3aa7beffd4db38a0063fe53d4b19941de4e483",
+      "bytes": 45578587,
+      "import_to_mysql": false,
+      "distributed_as": "analysis/fact_orders_wide.csv.gz",
+      "archive_sha256": "ad129efed95d7e2c06ddac7b04c8de7c79f24852ca96e5c25b0372ea5a6ea0d7"
+    },
+    "data_quality_report": {
+      "file": "analysis/data_quality_report.csv",
+      "sha256": "e7a99fb97877bc8806219fd0ae817e21cb710a1eebf2d1613f8729f53b1e535c",
+      "bytes": 2082,
+      "import_to_mysql": false
+    }
+  },
+  "preprocess_sha256": "f1173396446691ebc460b64718d24775adbbc8d4562faf2d0b726010cd2253c8"
+}

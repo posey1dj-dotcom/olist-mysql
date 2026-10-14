@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+.venv
+.local
+__pycache__
+reports
+analysis
+tests
+*.zip
+data/clean/*.csv
