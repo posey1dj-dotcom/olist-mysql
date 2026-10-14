@@ -14,7 +14,7 @@
 
 ## 一键搭建
 
-先确保你有此**私有仓库的访问权限**，然后运行：
+本仓库已公开，可直接克隆并部署：
 
 ```bash
 git clone https://github.com/posey1dj-dotcom/olist-mysql.git
